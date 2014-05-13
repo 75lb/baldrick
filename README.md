@@ -8,6 +8,8 @@ baldrick
 ========
 Your own private dogsbody. Does the shitty work you can't be arsed to do.
 
+![baldrick](http://fileunderoptimism.files.wordpress.com/2013/04/baldrick-blackadder.jpg)
+
 install
 -------
 With [node.js](http://nodejs.org) installed, run:
