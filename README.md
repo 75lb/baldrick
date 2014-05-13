@@ -6,7 +6,7 @@
 
 baldrick
 ========
-Do boring, repetitive work you can't be arsed to do.. 
+Your own private dogsbody. Does the shitty work you can't be arsed to do.
 
 Example
 -------
