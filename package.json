@@ -1,6 +1,6 @@
 {
   "name": "baldrick",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Your own private dogsbody. Does the shitty work you can't be arsed to do.",
   "repository": "https://github.com/75lb/baldrick",
   "bin": "bin/baldrick.js",
