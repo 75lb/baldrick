@@ -8,6 +8,14 @@ baldrick
 ========
 Your own private dogsbody. Does the shitty work you can't be arsed to do.
 
+install
+-------
+With [node.js](http://nodejs.org) installed, run:
+```sh
+$ npm install -g baldrick
+```
+*Mac / Linux users may need to run the above with `sudo`*.
+
 Example
 -------
 ```sh
