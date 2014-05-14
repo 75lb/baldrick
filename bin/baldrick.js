@@ -12,9 +12,8 @@ var Model = require("nature").Model,
 var argv = new Model()
     .define({ name: "do", type: "string" })
     .define({ name: "when", type: Array, defaultOption: true })
-    .define({ name: "change", type: "boolean" });
-
-argv.set(process.argv);
+    .define({ name: "change", type: "boolean" })
+    .set(process.argv);
 
 var fileSet = new mfs.FileSet(argv.when);
 
