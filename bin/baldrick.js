@@ -6,7 +6,8 @@ var Model = require("nature").Model,
     mfs = require("more-fs"),
     cp = require("child_process"),
     dope = require("console-dope"),
-    w = require("wodge");
+    w = require("wodge"),
+    alert = require("./alert");
 
 var argv = new Model()
     .define({ name: "do", type: "string" })
@@ -23,6 +24,7 @@ fileSet.files.forEach(function(file){
         if (argv.change && (curr.mtime.getTime() > prev.mtime.getTime())){
             cp.exec(argv.do, function(err, stdout, stderr){
                 if (err){
+                    alert.bell();
                     dope.red.bold.log("%s fucked up", w.symbol.cross);
                     dope.log(err.message);
                 } else {
