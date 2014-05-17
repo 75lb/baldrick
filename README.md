@@ -1,6 +1,7 @@
 [![view on npm](http://img.shields.io/npm/v/baldrick.svg)](https://www.npmjs.org/package/baldrick)
 ![npm module downloads per month](http://img.shields.io/npm/dm/baldrick.svg)
 [![Dependency Status](https://david-dm.org/75lb/baldrick.svg)](https://david-dm.org/75lb/baldrick)
+![Analytics](https://ga-beacon.appspot.com/UA-27725889-33/baldrick/README.md?pixel)
 
 ** work in progress ** 
 
