@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 
-var Model = require("nature").Model,
+var parseArgv = require("command-line-args"),
     fs = require("fs"),
     mfs = require("more-fs"),
     cp = require("child_process"),
@@ -9,11 +9,11 @@ var Model = require("nature").Model,
     w = require("wodge"),
     alert = require("./alert");
 
-var argv = new Model()
-    .define({ name: "do", type: "string" })
-    .define({ name: "when", type: Array, defaultOption: true })
-    .define({ name: "change", type: "boolean" })
-    .set(process.argv);
+var argv = parseArgv([
+    { name: "do", type: "string" },
+    { name: "when", type: Array, defaultOption: true },
+    { name: "change", type: "boolean" }
+]);
 
 var fileSet = new mfs.FileSet(argv.when);
 

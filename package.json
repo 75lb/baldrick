@@ -9,9 +9,9 @@
   },
   "author": "Lloyd Brookes",
   "dependencies": {
-    "console-dope": "^0.3.3",
-    "more-fs": "^0.3.0",
-    "nature": "~0.4.2",
+    "command-line-args": "~0.0.0",
+    "console-dope": "~0.3.3",
+    "more-fs": "~0.3.0",
     "wodge": "~0.6.4"
   }
 }
