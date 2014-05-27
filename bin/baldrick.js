@@ -10,9 +10,9 @@ var parseArgv = require("command-line-args"),
     alert = require("./alert");
 
 var argv = parseArgv([
-    { name: "do", type: "string" },
+    { name: "do", type: String },
     { name: "when", type: Array, defaultOption: true },
-    { name: "change", type: "boolean" }
+    { name: "change", type: Boolean }
 ]);
 
 var fileSet = new mfs.FileSet(argv.when);
