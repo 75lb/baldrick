@@ -1,21 +1,23 @@
 #!/usr/bin/env node
 "use strict";
 
-var parseArgv = require("command-line-args"),
+var cliArgs = require("command-line-args"),
     fs = require("fs"),
     mfs = require("more-fs"),
+    FileSet = require("file-set"),
     cp = require("child_process"),
     dope = require("console-dope"),
-    w = require("wodge"),
+    s = require("string-ting"),
     alert = require("./alert");
 
-var argv = parseArgv([
+var argv = cliArgs([
     { name: "do", type: String },
     { name: "when", type: Array, defaultOption: true },
-    { name: "change", type: Boolean }
-]);
+    { name: "change", type: Boolean },
+    { name: "speak", alias: "s", type: Boolean }
+]).parse();
 
-var fileSet = new mfs.FileSet(argv.when);
+var fileSet = FileSet(argv.when);
 
 fileSet.files.forEach(function(file){
     fs.watchFile(file, { interval: 2000 }, function(curr, prev){
@@ -24,10 +26,12 @@ fileSet.files.forEach(function(file){
             cp.exec(argv.do, function(err, stdout, stderr){
                 if (err){
                     alert.bell();
-                    dope.red.bold.log("%s fucked up", w.symbol.cross);
+                    if (argv.speak) alert.say("i fucked up, my lord");
+                    dope.red.bold.log("%s fucked up", s.symbol.cross);
                     dope.log(err.message);
                 } else {
-                    dope.bold.green.log("%s work done", w.symbol.tick);
+                    if (argv.speak) alert.say("my lord");
+                    dope.bold.green.log("%s work done", s.symbol.tick);
                 }
                 if (stdout || stderr){
                     dope.bold.log("\noutput");

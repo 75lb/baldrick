@@ -4,7 +4,7 @@ exports.say = say;
 exports.bell = bell;
 
 function say(msg){
-    cp.exec("say " + msg);
+    cp.exec("say -v Ralph " + msg);
 }
 
 function bell(){
