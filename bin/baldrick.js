@@ -3,11 +3,10 @@
 
 var cliArgs = require("command-line-args"),
     fs = require("fs"),
-    mfs = require("more-fs"),
     FileSet = require("file-set"),
     cp = require("child_process"),
     dope = require("console-dope"),
-    s = require("string-ting"),
+    s = require("string-tools"),
     alert = require("./alert");
 
 var argv = cliArgs([
@@ -17,7 +16,7 @@ var argv = cliArgs([
     { name: "speak", alias: "s", type: Boolean }
 ]).parse();
 
-var fileSet = FileSet(argv.when);
+var fileSet = new FileSet(argv.when);
 
 fileSet.files.forEach(function(file){
     fs.watchFile(file, { interval: 2000 }, function(curr, prev){

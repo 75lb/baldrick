@@ -12,6 +12,6 @@
     "command-line-args": "^0.2.0",
     "console-dope": "~0.3.3",
     "file-set": "^0.1.0",
-    "string-ting": "0.0.1"
+    "string-tools": "^0.1.4"
   }
 }
