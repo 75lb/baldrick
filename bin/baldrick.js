@@ -7,7 +7,7 @@ var cliArgs = require("command-line-args"),
     cp = require("child_process"),
     dope = require("console-dope"),
     s = require("string-tools"),
-    alert = require("./alert");
+    alert = require("../lib/alert");
 
 var cli = cliArgs([
     { name: "do", type: String },
@@ -34,17 +34,17 @@ fileSet.files.forEach(function(file){
             cp.exec(argv.do, function(err, stdout, stderr){
                 if (err){
                     alert.bell();
-                    if (argv.speak) alert.say("i fucked up, my lord");
+                    if (argv.speak) alert.say("i fucked up!");
                     dope.red.bold.log("%s fucked up", s.symbol.cross);
                     dope.log(err.message);
                 } else {
                     if (argv.speak) alert.say("my lord");
                     dope.bold.green.log("%s work done", s.symbol.tick);
-                }
-                if (stdout || stderr){
-                    dope.bold.log("\noutput");
-                    if (stdout) dope.log(stdout);
-                    if (stderr) dope.log(stderr);
+                    if (stdout || stderr){
+                        dope.bold.log("\noutput");
+                        if (stdout) dope.log(stdout);
+                        if (stderr) dope.log(stderr);
+                    }
                 }
             });
         }
