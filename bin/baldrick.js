@@ -9,12 +9,21 @@ var cliArgs = require("command-line-args"),
     s = require("string-tools"),
     alert = require("./alert");
 
-var argv = cliArgs([
+var cli = cliArgs([
     { name: "do", type: String },
     { name: "when", type: Array, defaultOption: true },
     { name: "change", type: Boolean },
     { name: "speak", alias: "s", type: Boolean }
-]).parse();
+]);
+var usage = cli.usage({ forms: [ "$ baldrick <options>" ] })
+
+try {
+    var argv = cli.parse();
+} catch(err){
+    halt(err.message);
+}
+
+if (!(argv.do && argv.when)) halt("Must specify --do and --when");
 
 var fileSet = new FileSet(argv.when);
 
@@ -41,3 +50,9 @@ fileSet.files.forEach(function(file){
         }
     });
 });
+
+function halt(msg){
+    dope.red.error("Error: " + msg);
+    dope.log(usage);
+    process.exit(1);
+}

@@ -9,7 +9,7 @@
   },
   "author": "Lloyd Brookes",
   "dependencies": {
-    "command-line-args": "^0.2.0",
+    "command-line-args": "^0.3.0",
     "console-dope": "~0.3.3",
     "file-set": "^0.1.0",
     "string-tools": "^0.1.4"
