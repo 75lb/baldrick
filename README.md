@@ -3,7 +3,7 @@
 [![Dependency Status](https://david-dm.org/75lb/baldrick.svg)](https://david-dm.org/75lb/baldrick)
 ![Analytics](https://ga-beacon.appspot.com/UA-27725889-33/baldrick/README.md?pixel)
 
-** work in progress ** 
+**work in progress** 
 
 baldrick
 ========
