@@ -1,16 +1,24 @@
 {
   "name": "baldrick",
   "version": "0.1.2",
-  "description": "Your own private dogsbody. Does the shitty work you can't be arsed to do.",
+  "description": "A general-purpose filesystem-watch-and-respond tool.",
   "repository": "https://github.com/75lb/baldrick",
+  "license": "MIT",
   "bin": "bin/baldrick.js",
   "scripts": {
     "test": ""
   },
+  "keywords": [
+    "filesystem",
+    "file",
+    "watch",
+    "watcher",
+    "sassc"
+  ],
   "author": "Lloyd Brookes",
   "dependencies": {
-    "command-line-args": "~0.5.9",
     "console-dope": "~0.3.3",
+    "command-line-args": "^1.1.0-0",
     "file-set": "~0.2.0",
     "string-tools": "~0.1.8"
   }
