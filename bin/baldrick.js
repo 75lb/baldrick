@@ -9,8 +9,8 @@ var s = require("string-tools");
 var alert = require("../lib/alert");
 
 var cli = cliArgs([
-    { name: "do", type: String },
-    { name: "when", type: String, multiple: true, defaultOption: true },
+    { name: "do", type: String, multiple: true },
+    { name: "when", type: String, defaultOption: true },
     { name: "change", type: Boolean },
     { name: "speak", alias: "s", type: Boolean },
     { name: "poll-interval", alias: "p", type: Number, defaultValue: 1000 },
@@ -42,16 +42,11 @@ if (options.help){
     process.exit(0);
 }
 
-if (!(options.do && options.when)) halt("Must specify --do and --when");
+validate();
+watchFiles(options.when);
 
-var fileSet = new FileSet(options.when);
-
-if (options.verbose){
-    console.log(fileSet.files.join("\n"));
-}
-
-function runDo(){
-    cp.exec(options.do, function(err, stdout, stderr){
+function runCommand(command){
+    cp.exec(command, function(err, stdout, stderr){
         if (err){
             alert.bell();
             if (options.speak) alert.say("i fucked up!");
@@ -69,20 +64,30 @@ function runDo(){
     });
 }
 
-function onFileChange(file, curr, prev){
-    dope.bold.underline.log("%s touched", file);
-    if (options.change && (curr.mtime.getTime() > prev.mtime.getTime())){
-        runDo();
-    }
-}
+function watchFiles(whenExpression){
+    var fileSet = new FileSet(whenExpression);
 
-fileSet.files.forEach(function(file){
-    fs.watchFile(file, { interval: options["poll-interval"] }, onFileChange.bind(null, file));
-});
-runDo();
+    fileSet.files.forEach(function(file){
+        if (options.verbose){
+            console.log(file);
+        }
+
+        fs.watchFile(file, { interval: options["poll-interval"] }, function(currStat, prevStat){
+            dope.bold.underline.log("%s touched", file);
+            if (options.change && (currStat.mtime.getTime() > prevStat.mtime.getTime())){
+                options.do.forEach(runCommand);
+            }
+        });
+    });    
+}
+options.do.forEach(runCommand);
 
 function halt(msg){
     dope.red.error("Error: " + msg);
     dope.log(usage);
     process.exit(1);
+}
+
+function validate(){
+    if (!(options.do.length && options.when)) halt("Must specify --do and --when");
 }
