@@ -10,7 +10,7 @@ var alert = require("../lib/alert");
 
 var cli = cliArgs([
     { name: "do", type: String, multiple: true },
-    { name: "when", type: String, defaultOption: true },
+    { name: "when", type: String, multiple: true, defaultOption: true },
     { name: "change", type: Boolean },
     { name: "speak", alias: "s", type: Boolean },
     { name: "poll-interval", alias: "p", type: Number, defaultValue: 1000 },
@@ -45,7 +45,12 @@ if (options.help){
 validate();
 watchFiles(options.when);
 
-function runCommand(command){
+function runCommand(file, command){
+    if (file){
+        command = command.replace(/{{file}}/g, file);
+    }
+    if (/{{file}}/.test(command)) return;
+    
     cp.exec(command, function(err, stdout, stderr){
         if (err){
             alert.bell();
@@ -75,12 +80,12 @@ function watchFiles(whenExpression){
         fs.watchFile(file, { interval: options["poll-interval"] }, function(currStat, prevStat){
             dope.bold.underline.log("%s touched", file);
             if (options.change && (currStat.mtime.getTime() > prevStat.mtime.getTime())){
-                options.do.forEach(runCommand);
+                options.do.forEach(runCommand.bind(null, file));
             }
         });
     });    
 }
-options.do.forEach(runCommand);
+options.do.forEach(runCommand.bind(null, null));
 
 function halt(msg){
     dope.red.error("Error: " + msg);
