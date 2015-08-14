@@ -9,22 +9,21 @@ var s = require("string-tools");
 var alert = require("../lib/alert");
 
 var cli = cliArgs([
-    { name: "do", type: String, multiple: true },
-    { name: "when", type: String, multiple: true, defaultOption: true },
+    { name: "do", type: String, multiple: true, typeLabel: "<commands>" },
+    { name: "when", type: String, multiple: true, defaultOption: true, typeLabel: "<files>"},
     { name: "change", type: Boolean },
     { name: "speak", alias: "s", type: Boolean },
-    { name: "poll-interval", alias: "p", type: Number, defaultValue: 1000 },
+    { name: "poll-interval", alias: "p", type: Number, defaultValue: 1000, typeLabel: "<ms>" },
     { name: "help", alias: "h", type: Boolean },
     { name: "verbose", alias: "v", type: Boolean }
 ]);
 
 var usage = cli.getUsage({ 
-    title: "[bold]{baldrick}",
+    title: "baldrick",
     description: "A general-purpose filesystem-watch-and-respond tool.",
     usage: {
-        title: "[bold]{Usage}",
         forms: [ 
-            "$ baldrick --do <command> --when <files> [--change] [--speak] [--poll-interval <number>]",
+            "$ baldrick --do <command> --when <files> [--change] [--speak] [--poll-interval <ms>]",
             "$ baldrick --help" 
         ]
     },
