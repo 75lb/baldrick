@@ -1,6 +1,6 @@
 {
   "name": "baldrick",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A general-purpose filesystem-watch-and-respond tool.",
   "repository": "https://github.com/75lb/baldrick",
   "license": "MIT",
