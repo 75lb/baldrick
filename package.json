@@ -4,7 +4,7 @@
   "description": "A general-purpose filesystem-watch-and-respond tool.",
   "repository": "https://github.com/75lb/baldrick",
   "license": "MIT",
-  "bin": "bin/baldrick.js",
+  "bin": "bin/cli.js",
   "scripts": {
     "test": ""
   },
@@ -17,9 +17,7 @@
   ],
   "author": "Lloyd Brookes",
   "dependencies": {
-    "command-line-args": "^2.1.3",
-    "console-dope": "~0.3.3",
-    "file-set": "~0.2.0",
-    "string-tools": "^1"
+    "command-line-tool": "^0.6.4",
+    "file-set": "^1.1.1"
   }
 }

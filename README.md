@@ -1,9 +1,10 @@
 [![view on npm](http://img.shields.io/npm/v/baldrick.svg)](https://www.npmjs.org/package/baldrick)
 ![npm module downloads per month](http://img.shields.io/npm/dm/baldrick.svg)
 [![Dependency Status](https://david-dm.org/75lb/baldrick.svg)](https://david-dm.org/75lb/baldrick)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 # baldrick
-A general-purpose filesystem-watch-and-respond tool. 
+A general-purpose filesystem-watch-and-respond tool.
 
 ![baldrick](http://fileunderoptimism.files.wordpress.com/2013/04/baldrick-blackadder.jpg)
 
@@ -31,6 +32,6 @@ output
 cat: ksjd: No such file or directory
 ```
 
-* * * 
+* * *
 
-&copy; 2015 Lloyd Brookes 75pound@gmail.com.
+&copy; 2014-16 Lloyd Brookes 75pound@gmail.com.
